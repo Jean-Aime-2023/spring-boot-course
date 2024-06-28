@@ -9,4 +9,10 @@ public record Run(
     LocalDateTime completedOn,
     Integer miles,
     Location location
-) {}
+) {
+    public Run {
+        if (!completedOn.isAfter(startedOn)) {
+            throw new IllegalArgumentException("Completed On must be after Started On");
+        }
+    }
+}
